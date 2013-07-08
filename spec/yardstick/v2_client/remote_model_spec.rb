@@ -5,7 +5,7 @@ describe Yardstick::V2Client::RemoteModel do
 
   describe :respond_to_missing? do
     it 'should respond to all_by_whatever attribute' do
-      expect(subject).to respond_to :all_by_id
+      expect(subject).to respond_to :all_indexed_on_id
     end
   end
 end

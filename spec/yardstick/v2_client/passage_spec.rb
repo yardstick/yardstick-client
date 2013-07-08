@@ -29,11 +29,11 @@ describe Yardstick::V2Client::Passage do
     end
   end
 
-  describe 'all_by_id' do
+  describe 'all_indexed_on_id' do
     it 'should return a list of passages from measure and return a hash by id' do
       stub_path_response(:get, '/v2/passages', 200, [p1, p2], token: token)
 
-      passages = passage.all_by_id(token)
+      passages = passage.all_indexed_on_id(token)
 
       expect(passages.length).to eq 2
       expect(passages[p1[:id]].name).to eq 'Case 0051'
