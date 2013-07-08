@@ -1,3 +1,6 @@
+require 'yardstick/v2_client/party_pooper'
+require 'yardstick/active_model'
+
 module Yardstick
   module V2Client
     module RemoteModel
