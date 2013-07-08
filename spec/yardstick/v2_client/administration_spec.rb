@@ -6,10 +6,10 @@ describe Yardstick::V2Client::Administration do
 
   describe 'all' do
     let(:a1response) do
-      { id: FactoryGirl.generate(:id), name: 'June 2013 Administration', site_id: FactoryGirl.generate(:id) }
+      { id: Id.generate, name: 'June 2013 Administration', site_id: Id.generate }
     end
     let(:a2response) do
-      { id: FactoryGirl.generate(:id), name: 'December 2013 Administration', site_id: FactoryGirl.generate(:id) }
+      { id: Id.generate, name: 'December 2013 Administration', site_id: Id.generate }
     end
     it 'should return a list of administrations from measure' do
       stub_path_response(:get, '/v2/administrations', 200, [a1response, a2response], token: token)
