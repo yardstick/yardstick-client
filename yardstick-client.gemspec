@@ -9,8 +9,9 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Jason Wall", "Daniel Huckstep"]
   gem.email         = ["danielh@getyardstick.com"]
   gem.description   = %q{Gem for interacting with the Yardstick Admin API}
-  gem.summary       = %q{Use this for your own integratin with the Yardstick Measure platform. We use it too!}
+  gem.summary       = %q{Use this for your own integration with the Yardstick Measure platform. We use it too!}
   gem.homepage      = "http://www.github.com/yardstick/yardstick-client"
+  gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
@@ -22,4 +23,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'activemodel', '~> 3.2.13'
 
   gem.add_development_dependency 'rspec', '~> 2.13.0'
+  gem.add_development_dependency 'mocha', '~> 0.14.0'
+  gem.add_development_dependency 'webmock', '~> 1.13.0'
 end
