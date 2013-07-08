@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Yardstick::Client::VERSION
   gem.authors       = ["Jason Wall", "Daniel Huckstep"]
   gem.email         = ["danielh@getyardstick.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Gem for interacting with the Yardstick Admin API}
+  gem.summary       = %q{Use this for your own integratin with the Yardstick Measure platform. We use it too!}
   gem.homepage      = "http://www.github.com/yardstick/yardstick-client"
 
   gem.files         = `git ls-files`.split($/)
