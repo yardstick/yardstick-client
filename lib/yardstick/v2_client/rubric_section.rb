@@ -1,3 +1,5 @@
+require 'yardstick/v2_client/rubric_criteria'
+
 module Yardstick
   module V2Client
     class RubricSection

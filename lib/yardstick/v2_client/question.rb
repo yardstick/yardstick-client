@@ -1,4 +1,6 @@
 require 'ostruct'
+require 'yardstick/v2_client/remote_model'
+require 'yardstick/v2_client/rubric_section'
 
 module Yardstick
   module V2Client

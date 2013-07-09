@@ -1,4 +1,5 @@
 require 'ostruct'
+require 'yardstick/v2_client/remote_model'
 
 module Yardstick
   module V2Client
