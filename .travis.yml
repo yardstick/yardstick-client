@@ -15,6 +15,7 @@ script: time ./script/travis.sh
 branches:
     only: master
 
+# activesupport 4.0.0 only supported on ruby >= 1.9.3
 matrix:
     exclude:
         -   rvm: 1.9.2
