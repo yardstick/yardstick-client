@@ -12,8 +12,6 @@ gemfile:
 
 script: time ./script/travis.sh
 
-bundler_args: --binstubs
-
 matrix:
     exclude:
         -   rvm: 1.9.2
