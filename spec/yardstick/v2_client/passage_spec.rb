@@ -3,12 +3,12 @@ require 'spec_helper'
 describe Yardstick::V2Client::Passage do
   let(:passage) { Yardstick::V2Client::Passage }
   let(:token) { '109812093' }
-  let(:item_bank_id) { FactoryGirl.generate(:id) }
+  let(:item_bank_id) { Id.generate }
   let(:p1) do
-    { id: FactoryGirl.generate(:id), name: 'Case 0051', created_by_id: FactoryGirl.generate(:id), item_bank_id: item_bank_id }
+    { id: Id.generate, name: 'Case 0051', created_by_id: Id.generate, item_bank_id: item_bank_id }
   end
   let(:p2) do
-    { id: FactoryGirl.generate(:id), name: 'Case 0029', created_by_id: FactoryGirl.generate(:id), item_bank_id: item_bank_id }
+    { id: Id.generate, name: 'Case 0029', created_by_id: Id.generate, item_bank_id: item_bank_id }
   end
 
   describe 'all' do
