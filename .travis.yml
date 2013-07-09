@@ -12,6 +12,9 @@ gemfile:
 
 script: time ./script/travis.sh
 
+branches:
+    only: master
+
 matrix:
     exclude:
         -   rvm: 1.9.2
