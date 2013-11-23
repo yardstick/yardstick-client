@@ -7,7 +7,7 @@ module Yardstick
     class Question
       include RemoteModel
 
-      attr_accessor :id, :canonical_id, :passage_id, :passage, :item_bank_id, :topic_id, :created_by_id, :locale, :html, :paths, :rubric_sections
+      attr_accessor :id, :canonical_id, :passage_id, :passage, :item_bank_id, :topic_id, :created_by_id, :locale, :html, :paths, :rubric_sections, :workflow_state
 
       def self.assets
         OpenStruct.new(get('/v2/questions/assets').parsed_response)
