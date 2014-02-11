@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'active_support/testing/deprecation'
-require 'ruby-debug'
 
 describe Yardstick::ActiveModel do
   include ActiveSupport::Testing::Deprecation
