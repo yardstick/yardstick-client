@@ -12,8 +12,8 @@ module Yardstick
 
     def initialize(params = {})
       params.each do |attr, value|
-        if self.respond_to?("#{attr}=")
-          self.public_send("#{attr}=", value)
+        if respond_to?("#{attr}=")
+          public_send("#{attr}=", value)
         else
           ActiveSupport::Deprecation.warn("Unknown attribute '#{attr}' for '#{self.class.name}'. Your client gem may be out of date compared to the current Yardstick API version.")
         end
