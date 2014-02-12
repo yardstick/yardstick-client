@@ -9,7 +9,20 @@ module Yardstick
 
       resource_uri '/v2/questions'
 
-      attr_accessor :id, :canonical_id, :passage_id, :passage, :item_bank_id, :topic_id, :created_by_id, :locale, :html, :paths, :rubric_sections, :workflow_state
+      attr_accessor :id,
+                    :canonical_id,
+                    :passage_id,
+                    :passage,
+                    :item_bank_id,
+                    :topic_id,
+                    :created_by_id,
+                    :locale,
+                    :html,
+                    :paths,
+                    :rubric_sections,
+                    :workflow_state,
+                    :free_form_marking,
+                    :marking_method
 
       def self.assets
         OpenStruct.new(get('/v2/questions/assets').parsed_response)
