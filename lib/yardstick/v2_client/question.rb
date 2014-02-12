@@ -22,7 +22,8 @@ module Yardstick
                     :rubric_sections,
                     :workflow_state,
                     :free_form_marking,
-                    :marking_method
+                    :marking_method,
+                    :rationale
 
       def self.assets
         OpenStruct.new(get('/v2/questions/assets').parsed_response)
