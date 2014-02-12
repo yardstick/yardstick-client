@@ -5,7 +5,7 @@ module Yardstick
     class Passage
       include RemoteModel
 
-      attr_accessor :id, :created_by_id, :name, :item_bank_id, :created_at, :updated_at, :truncate
+      attr_accessor :id, :created_by_id, :name, :item_bank_id, :created_at, :updated_at, :truncate, :html
 
       resource_uri '/v2/passages'
     end
