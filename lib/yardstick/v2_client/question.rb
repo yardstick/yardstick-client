@@ -23,7 +23,8 @@ module Yardstick
                     :workflow_state,
                     :free_form_marking,
                     :marking_method,
-                    :rationale
+                    :rationale,
+                    :sample_responses
 
       def self.assets
         OpenStruct.new(get('/v2/questions/assets').parsed_response)
