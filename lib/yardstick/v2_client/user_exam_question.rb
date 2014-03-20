@@ -10,21 +10,17 @@ module Yardstick
 
       resource_uri '/v2/user_exam_questions'
 
-      def self.from_api(resp, extras = {})
-        resp = resp.parsed_response if resp.respond_to?(:parsed_response)
-        attrs = resp.with_indifferent_access
-        attrs.merge!(extras)
+      def self.process_response(resp, extras = {})
+        attrs = super
         attrs.merge!(
           paths: OpenStruct.new(attrs[:paths]),
           answer: Answer.from_api(attrs[:answer]),
           question: Question.from_api(attrs[:question])
         )
-        attrs.merge!(user_exam: UserExam.from_api(attrs[:user_exam])) if attrs[:user_exam].present?
-        new(attrs)
       end
 
       def self.for_user_exam(token, url, options = {})
-        response = get(url, body: options.merge(token: token))
+        response = get(url, query: options.merge(token: token))
         response.map { |ueq| from_api(ueq, token: token) }
       end
 
