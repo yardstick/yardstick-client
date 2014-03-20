@@ -23,10 +23,10 @@ describe Yardstick::V2Client do
           }
         end
 
-        subject { Yardstick::V2Client.whoami('some token') }
+        subject { Yardstick::V2Client.whoami(token) }
 
         it 'should ask the klass attribute for where to get the class from' do
-          stub_path_response(:get, '/v2/whoami', 200, user_attributes)
+          stub_path_response(:get, '/v2/whoami', 200, user_attributes, token: token)
 
           expect(subject.class).to eq(Yardstick::V2Client.const_get(user_type))
           expect(subject.id).to eq(user_attributes[:id])
