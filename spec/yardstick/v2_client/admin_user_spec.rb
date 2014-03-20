@@ -19,7 +19,7 @@ describe Yardstick::V2Client::AdminUser do
         email: email,
         roles: roles,
         account_id: account_id
-      })
+      }, token: token)
 
       me = admin_user.whoami(token)
       expect(me.id).to eq id
@@ -31,7 +31,7 @@ describe Yardstick::V2Client::AdminUser do
     end
 
     it 'should raise an Unauthorized error when it gets a 401 back from measure' do
-      stub_next_response(:get, 401)
+      stub_path_response(:get, '/v2/admin_users/whoami', 401, {}, token: 'bad_token')
       expect {
         admin_user.whoami('bad_token')
       }.to raise_error Yardstick::V2Client::Unauthorized

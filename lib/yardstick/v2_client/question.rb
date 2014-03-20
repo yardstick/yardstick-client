@@ -50,7 +50,7 @@ module Yardstick
       end
 
       def self.find_by_url(url, options = {})
-        response = get(url, body: options)
+        response = get(url, query: options)
         return response if response.code > 399
         from_api(response)
       end

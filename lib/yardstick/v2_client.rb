@@ -30,7 +30,7 @@ module Yardstick
     base_uri ENV.fetch('MEASURE_BASE_URL', 'http://admin.dev')
 
     def self.whoami(token)
-      response = get('/v2/whoami', body: { token: token })
+      response = get('/v2/whoami', query: { token: token })
       class_name = response.delete('klass')
       "Yardstick::V2Client::#{class_name}".constantize.from_api(response)
     end

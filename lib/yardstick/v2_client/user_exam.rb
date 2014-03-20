@@ -5,24 +5,17 @@ module Yardstick
   module V2Client
     class UserExam
       include RemoteModel
-
       attr_accessor :token, :id, :paths, :user
 
-      def self.from_api(resp, extras = {})
-        resp = resp.parsed_response if resp.respond_to?(:parsed_response)
-        attrs = resp.with_indifferent_access
-        attrs.merge!(extras)
-        attrs.merge!(paths: OpenStruct.new(attrs[:paths]))
-        new(attrs)
-      end
+      resource_uri '/v2/user_exams'
 
-      def self.all(token, options = {})
-        response = get('/v2/user_exams', body: options.merge(token: token))
-        response.map { |ue| from_api(ue, token: token) }
+      def self.process_response(resp, extras = {})
+        attrs = super
+        attrs.merge!(paths: OpenStruct.new(attrs[:paths]))
       end
 
       def self.count(token, options = {})
-        response = get('/v2/user_exams/count', body: options.merge(token: token))
+        response = get('/v2/user_exams/count', query: options.merge(token: token))
         response['count']
       end
 

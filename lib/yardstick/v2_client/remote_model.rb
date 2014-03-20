@@ -36,7 +36,7 @@ module Yardstick
         end
 
         def request_all(token, options = {})
-          get(resource_uri, body: options.merge(token: token))
+          get(resource_uri, query: options.merge(token: token))
         end
 
         def all(token, options = {})
