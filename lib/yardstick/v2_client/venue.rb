@@ -10,7 +10,7 @@ module Yardstick
       def self.process_response(resp, extras = {})
         attrs = super
         attrs.merge!(
-          :account => Account.from_api(attrs[:account])
+          account: Account.from_api(attrs[:account])
         )
       end
     end
