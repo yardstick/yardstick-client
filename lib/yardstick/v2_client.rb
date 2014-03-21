@@ -1,26 +1,34 @@
 require 'yardstick/active_model'
-require 'yardstick/v2_client/admin_user'
-require 'yardstick/v2_client/administration'
-require 'yardstick/v2_client/answer'
-require 'yardstick/v2_client/authentication'
-require 'yardstick/v2_client/exam'
-require 'yardstick/v2_client/exam_form'
-require 'yardstick/v2_client/exam_question'
 require 'yardstick/v2_client/party_pooper'
-require 'yardstick/v2_client/passage'
-require 'yardstick/v2_client/question'
 require 'yardstick/v2_client/remote_model'
-require 'yardstick/v2_client/rubric_criteria'
-require 'yardstick/v2_client/rubric_section'
-require 'yardstick/v2_client/unauthorized'
-require 'yardstick/v2_client/user'
-require 'yardstick/v2_client/user_exam'
-require 'yardstick/v2_client/user_exam_question'
 
 module Yardstick
   module V2Client
     extend HTTParty::ClassMethods
     extend Yardstick::V2Client::PartyPooper::ClassMethods
+    extend ActiveSupport::Autoload
+
+    autoload :Account
+    autoload :AdminUser
+    autoload :Administration
+    autoload :Answer
+    autoload :Attachment
+    autoload :Authentication
+    autoload :Exam
+    autoload :ExamDeliveryStatusMessage
+    autoload :ExamForm
+    autoload :ExamQuestion
+    autoload :NomadUser
+    autoload :Passage
+    autoload :Question
+    autoload :RubricCriteria
+    autoload :RubricSection
+    autoload :TestCentreTimeWindow
+    autoload :Unauthorized
+    autoload :User
+    autoload :UserExam
+    autoload :UserExamQuestion
+    autoload :Venue
 
     mattr_accessor :default_options, :default_cookies
 

@@ -24,9 +24,8 @@ module Yardstick
       false
     end
 
-    # Fake out so we can use serializers
-    def read_attribute_for_serialization(attribute)
-      send(attribute)
+    ActiveSupport.on_load(:active_model_serializers) do
+      ActiveModel.send(:include, ::ActiveModel::SerializerSupport)
     end
 
     class Base
