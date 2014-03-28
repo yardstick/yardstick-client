@@ -50,4 +50,32 @@ describe Yardstick::V2Client::UserExamQuestion do
       expect(ueqs.length).to eq 1
     end
   end
+
+  context 'with a null answer' do
+    let(:response) do
+      [
+        {
+          score_tbd: true,
+          user_exam_id: user_exam_id,
+          question_id: 18,
+          correct: false,
+          workflow_state: 'raw',
+          score: 0,
+          id: 5,
+          points: 3
+        }
+      ]
+    end
+
+    it 'should still come across ok' do
+      stub_path_response(:get, "/v2/user_exams/#{user_exam_id}/user_exam_questions", 200, response, token: token)
+
+      ueqs = ueq.for_user_exam_id(token, user_exam_id)
+      expect(ueqs.length).to eq 1
+
+      r = ueqs.first
+
+      expect(r.id).to eq(5)
+    end
+  end
 end

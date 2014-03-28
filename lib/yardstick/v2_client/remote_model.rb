@@ -21,6 +21,7 @@ module Yardstick
       module ClassMethods
 
         def from_api(resp, extras = {})
+          return nil if resp.nil?
           new(process_response(resp, extras))
         end
 
