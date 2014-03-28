@@ -15,7 +15,8 @@ module Yardstick
         attrs.merge!(
           paths: OpenStruct.new(attrs[:paths]),
           answer: Answer.from_api(attrs[:answer]),
-          question: Question.from_api(attrs[:question])
+          question: Question.from_api(attrs[:question]),
+          user_exam: UserExam.from_api(attrs[:user_exam])
         )
       end
 
