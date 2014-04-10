@@ -7,8 +7,8 @@ module Yardstick
 
       attr_accessor :token
 
-      def self.authenticate(email, password)
-        response = put('/v2/auth/token', body: { email: email, password: password })
+      def self.authenticate(email, password, options = {})
+        response = put('/v2/auth/token', body: options.merge({ email: email, password: password }))
         new(token: response['token'])
       end
     end
