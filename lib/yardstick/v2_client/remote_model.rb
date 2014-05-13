@@ -19,6 +19,9 @@ module Yardstick
       end
 
       module ClassMethods
+        def find(token, id)
+          from_api(get("#{resource_uri}/#{id}", query: { token: token }))
+        end
 
         def from_api(resp, extras = {})
           return nil if resp.nil?
