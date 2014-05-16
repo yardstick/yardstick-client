@@ -45,6 +45,10 @@ module Yardstick
 
         def all(token, options = {})
           response = request_all(token, options)
+          from_array(response)
+        end
+
+        def from_array(response)
           response.map { |r| from_api(r) }
         end
 
