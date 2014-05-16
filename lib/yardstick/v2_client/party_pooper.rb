@@ -25,7 +25,7 @@ module Yardstick
             raise Unauthorized
           when 502
             raise MeasureServiceError, "Bad Gateway"
-          when > 499
+          when 500..1000
             raise MeasureServiceError, resp
           end
         end
