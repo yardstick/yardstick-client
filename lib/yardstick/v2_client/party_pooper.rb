@@ -23,6 +23,8 @@ module Yardstick
           case resp.code
           when 401
             raise Unauthorized
+          when 500
+            raise Unexpected
           end
         end
       end
