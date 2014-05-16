@@ -1,6 +1,6 @@
 module Yardstick
   module V2Client
-    module Unexpected < StandardError
+    module MeasureServiceError < StandardError
     end
   end
 end
