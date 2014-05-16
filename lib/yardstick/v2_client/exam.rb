@@ -6,9 +6,10 @@ module Yardstick
 
       resource_uri '/v2/exams'
 
-      def process_response(resp, extras = {})
+      def self.process_response(resp, extras = {})
         attrs = super
-        attrs.merge!(:exam_forms, attrs[:exam_forms].map { |f| ExamForm.from_api(f) })
+        attrs.merge!(:exam_forms, ExamForm.from_array(attrs[:exam_forms])) if attrs.has_key?(:exam_forms)
+        attrs
       end
     end
   end
