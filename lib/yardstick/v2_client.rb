@@ -18,6 +18,7 @@ module Yardstick
     autoload :ExamDeliveryStatusMessage
     autoload :ExamForm
     autoload :ExamQuestion
+    autoload :MeasureServiceError
     autoload :NomadUser
     autoload :Passage
     autoload :Question

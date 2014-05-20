@@ -23,6 +23,10 @@ module Yardstick
           case resp.code
           when 401
             raise Unauthorized
+          when 502
+            raise MeasureServiceError, "Bad Gateway"
+          when 500..1000
+            raise MeasureServiceError, resp
           end
         end
       end
