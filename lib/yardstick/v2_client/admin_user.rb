@@ -1,10 +1,13 @@
 require 'yardstick/v2_client/remote_model'
+require 'yardstick/cacheable'
 
 module Yardstick
   module V2Client
     class AdminUser
       include RemoteModel
-      attr_accessor :first_name, :last_name, :id, :email, :roles, :account_id, :token
+      include Cacheable
+
+      cached_accessor :first_name, :last_name, :id, :email, :roles, :account_id, :token
 
       resource_uri '/v2/admin_users'
 

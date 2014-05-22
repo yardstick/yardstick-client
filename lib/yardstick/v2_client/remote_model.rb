@@ -1,5 +1,6 @@
 require 'yardstick/v2_client/party_pooper'
 require 'yardstick/active_model'
+require 'lol_concurrency'
 
 module Yardstick
   module V2Client
@@ -10,6 +11,8 @@ module Yardstick
         include HTTParty
         include PartyPooper
         include Yardstick::ActiveModel
+        include LolConcurrency::Future
+        extend LolConcurrency::Future
 
         base_uri ENV.fetch('MEASURE_BASE_URL', 'http://admin.dev')
       end

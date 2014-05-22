@@ -1,11 +1,13 @@
 require 'yardstick/v2_client/remote_model'
+require 'yardstick/cacheable'
 
 module Yardstick
   module V2Client
     class NomadUser
       include RemoteModel
+      include Cacheable
 
-      attr_accessor :id, :email, :first_name, :last_name, :roles, :token
+      cached_accessor :id, :email, :first_name, :last_name, :roles, :token
 
       def self.authenticate(username, password)
         response = put('/v2/nomad_users/auth', body: { email: username, password: password })
