@@ -19,6 +19,11 @@ module Yardstick
         response['count']
       end
 
+      def self.due_dates(token, options = {})
+        response = get('/v2/user_exams/count/group_by/due_dates', query: options.merge(token: token))
+        response.parsed_response
+      end
+
       def user_exam_questions(options = {})
         @user_exam_questions ||= begin
           options.fetch(:klass) { UserExamQuestion }.for_user_exam(token, paths.user_exam_questions, options.except(:klass))
