@@ -1,6 +1,7 @@
 require 'yardstick/v2_client/party_pooper'
 require 'yardstick/active_model'
 require 'lol_concurrency'
+require 'remote_associations'
 
 module Yardstick
   module V2Client
@@ -13,6 +14,7 @@ module Yardstick
         include Yardstick::ActiveModel
         include LolConcurrency::Future
         extend LolConcurrency::Future
+        include RemoteAssociations
 
         base_uri ENV.fetch('MEASURE_BASE_URL', 'http://admin.dev')
       end

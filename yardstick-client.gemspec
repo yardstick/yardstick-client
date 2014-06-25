@@ -23,6 +23,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'activemodel', '>= 3.2.13'
   gem.add_dependency 'webmock', '~> 1.13.0'
   gem.add_dependency 'lol_concurrency', '~> 0.0.1'
+  gem.add_dependency 'remote_associations', '~> 0.1.0'
 
   gem.add_development_dependency 'rspec', '~> 2.13.0'
   gem.add_development_dependency 'mocha', '~> 0.14.0'
