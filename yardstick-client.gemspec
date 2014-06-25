@@ -28,4 +28,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rspec', '~> 2.13.0'
   gem.add_development_dependency 'mocha', '~> 0.14.0'
   gem.add_development_dependency 'rake'
+  gem.add_development_dependency "pry", '~> 0.9'
+  gem.add_development_dependency "pry-debugger", '~> 0.2'
 end
