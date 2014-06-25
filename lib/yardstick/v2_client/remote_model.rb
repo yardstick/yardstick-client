@@ -61,7 +61,7 @@ module Yardstick
           if method.to_s =~ /^all_indexed_on_(.+)$/
             response = request_all(*args)
             return response.reduce({}) do |result, attrs|
-              instance = new(attrs)
+              instance = from_api(attrs)
               result[instance.send($1)] = instance
               result
             end
