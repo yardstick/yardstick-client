@@ -21,8 +21,7 @@ module Yardstick
       end
 
       def self.for_user_exam(token, url, options = {})
-        response = get(url, query: options.merge(token: token))
-        response.map { |ueq| from_api(ueq, token: token) }
+        query_collection(token, url, options)
       end
 
       def self.for_user_exam_id(token, user_exam_id, options = {})

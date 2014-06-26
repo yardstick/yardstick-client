@@ -28,8 +28,7 @@ module Yardstick
       end
 
       def self.upcoming_and_recent(token)
-        resp = get("#{resource_uri}/upcoming_and_recent", query: { token: token })
-        resp.map { |o| from_api(o) }
+        query_collection(token, "#{resource_uri}/upcoming_and_recent")
       end
     end
   end
