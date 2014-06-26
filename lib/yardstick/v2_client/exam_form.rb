@@ -5,8 +5,7 @@ module Yardstick
       attr_accessor :id, :name, :exam_id, :exam
 
       def self.assigned_to_me(token, options = {})
-        response = get('/v2/whoami/exam_form_assignments', :query => options.merge(:token => token))
-        ExamForm.from_array(response)
+        query_all(token, '/v2/whoami/exam_form_assignments', options)
       end
 
       def self.process_response(resp, extras = {})
