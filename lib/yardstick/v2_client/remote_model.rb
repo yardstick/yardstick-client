@@ -28,6 +28,11 @@ module Yardstick
           from_api(get("#{resource_uri}/#{id}", query: { token: token }))
         end
 
+        def find_by(token, options = {})
+          response = get_all(token, options)
+          from_api(response.first)
+        end
+
         def from_api(resp, extras = {})
           return nil if resp.nil?
           new(process_response(resp, extras))
