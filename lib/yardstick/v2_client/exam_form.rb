@@ -5,7 +5,7 @@ module Yardstick
       attr_accessor :id, :name, :exam_id, :exam
 
       def self.assigned_to_me(token, options = {})
-        query_all(token, '/v2/whoami/exam_form_assignments', options)
+        query_collection(token, '/v2/whoami/exam_form_assignments', options)
       end
 
       def self.process_response(resp, extras = {})

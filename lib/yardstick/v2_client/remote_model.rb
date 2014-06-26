@@ -56,14 +56,14 @@ module Yardstick
           get(uri, query: options.merge(token: token))
         end
 
-        def query_all(*args)
+        def query_collection(*args)
           CollectionProxy.new(self) do
             get_all(*args)
           end
         end
 
         def all(token, options = {})
-          query_all(token, options)
+          query_collection(token, options)
         end
 
         def from_array(response)
