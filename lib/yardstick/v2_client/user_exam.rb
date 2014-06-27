@@ -5,7 +5,10 @@ module Yardstick
   module V2Client
     class UserExam
       include RemoteModel
-      attr_accessor :token, :id, :paths, :user, :user_id
+      attr_accessor :token, :id, :paths, :user, :user_id, :exam_id, :exam_form_id
+
+      belongs_to_remote :exam, class: Exam
+      belongs_to_remote :exam_form, class: ExamForm
 
       resource_uri '/v2/user_exams'
 

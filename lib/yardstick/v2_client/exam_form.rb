@@ -4,6 +4,8 @@ module Yardstick
       include RemoteModel
       attr_accessor :id, :name, :exam_id, :exam
 
+      resource_uri '/v2/exam_forms'
+
       def self.assigned_to_me(token, options = {})
         query_collection(token, '/v2/whoami/exam_form_assignments', options)
       end
