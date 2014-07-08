@@ -5,7 +5,7 @@ module Yardstick
   module V2Client
     class UserExam
       include RemoteModel
-      attr_accessor :token, :id, :paths, :user, :user_id, :exam_id, :exam_form_id
+      attr_accessor :token, :id, :paths, :user, :user_id, :exam_id, :exam_form_id, :finished_at
 
       belongs_to_remote :exam, class: Exam
       belongs_to_remote :exam_form, class: ExamForm
@@ -15,6 +15,8 @@ module Yardstick
       def self.process_response(resp, extras = {})
         attrs = super
         attrs.merge!(paths: OpenStruct.new(attrs[:paths]))
+        attrs.merge!(finished_at: DateTime.iso8601(attrs[:finished_at])) unless attrs[:finished_at].nil?
+        attrs
       end
 
       def self.count(token, options = {})
