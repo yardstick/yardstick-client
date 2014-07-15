@@ -2,11 +2,12 @@ module Yardstick
   module V2Client
     class ExamForm
       include RemoteModel
-      attr_accessor :id, :name, :exam_id, :exam
+      attr_accessor :id, :name, :exam_id, :exam, :markers
+
+      resource_uri '/v2/exam_forms'
 
       def self.assigned_to_me(token, options = {})
-        response = get('/v2/whoami/exam_form_assignments', :query => options.merge(:token => token))
-        ExamForm.from_array(response)
+        query_collection(token, '/v2/whoami/exam_form_assignments', options)
       end
 
       def self.process_response(resp, extras = {})

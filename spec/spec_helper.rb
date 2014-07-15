@@ -5,6 +5,7 @@ require 'yardstick-client'
 require 'json'
 
 require 'mocha/api'
+require 'pry'
 require 'yardstick/v2_client/testing'
 
 Dir[File.expand_path('support/**/*.rb', File.dirname(__FILE__))].each do |f|

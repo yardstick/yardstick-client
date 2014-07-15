@@ -18,13 +18,17 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
+  gem.required_ruby_version = '>= 1.9.2' # New hashes
+
   gem.add_dependency 'httparty', '~> 0.10.0'
   gem.add_dependency 'activesupport', '>= 3.2.13'
   gem.add_dependency 'activemodel', '>= 3.2.13'
   gem.add_dependency 'webmock', '~> 1.13.0'
   gem.add_dependency 'lol_concurrency', '~> 0.0.1'
+  gem.add_dependency 'remote_associations', '~> 0.1.0'
 
   gem.add_development_dependency 'rspec', '~> 2.13.0'
   gem.add_development_dependency 'mocha', '~> 0.14.0'
   gem.add_development_dependency 'rake'
+  gem.add_development_dependency "pry", '~> 0.9'
 end

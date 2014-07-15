@@ -1,4 +1,5 @@
 require 'yardstick/active_model'
+require 'yardstick/v2_client/collection_proxy'
 require 'yardstick/v2_client/party_pooper'
 require 'yardstick/v2_client/remote_model'
 

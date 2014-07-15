@@ -1,6 +1,7 @@
 require 'yardstick/v2_client/party_pooper'
 require 'yardstick/active_model'
 require 'lol_concurrency'
+require 'remote_associations'
 
 module Yardstick
   module V2Client
@@ -13,6 +14,7 @@ module Yardstick
         include Yardstick::ActiveModel
         include LolConcurrency::Future
         extend LolConcurrency::Future
+        include RemoteAssociations
 
         base_uri ENV.fetch('MEASURE_BASE_URL', 'http://admin.dev')
       end
@@ -24,6 +26,11 @@ module Yardstick
       module ClassMethods
         def find(token, id)
           from_api(get("#{resource_uri}/#{id}", query: { token: token }))
+        end
+
+        def find_by(token, options = {})
+          response = get_all(token, options)
+          from_api(response.first)
         end
 
         def from_api(resp, extras = {})
@@ -42,13 +49,21 @@ module Yardstick
           @resource_uri = uri
         end
 
-        def request_all(token, options = {})
-          get(resource_uri, query: options.merge(token: token))
+        def get_all(*args)
+          options = args.extract_options!
+          token = args.shift
+          uri = args.shift || resource_uri
+          get(uri, query: options.merge(token: token))
+        end
+
+        def query_collection(*args)
+          CollectionProxy.new(self) do
+            get_all(*args)
+          end
         end
 
         def all(token, options = {})
-          response = request_all(token, options)
-          from_array(response)
+          query_collection(token, options)
         end
 
         def from_array(response)
@@ -57,9 +72,9 @@ module Yardstick
 
         def method_missing(method, *args, &block)
           if method.to_s =~ /^all_indexed_on_(.+)$/
-            response = request_all(*args)
+            response = get_all(*args)
             return response.reduce({}) do |result, attrs|
-              instance = new(attrs)
+              instance = from_api(attrs)
               result[instance.send($1)] = instance
               result
             end
