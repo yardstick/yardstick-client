@@ -23,6 +23,19 @@ module Yardstick
         self.class.put(*args)
       end
 
+      def update_attributes(response)
+        attrs = self.class.process_response(response)
+        copy_attrs(attrs)
+      end
+
+      def instance_action_uri(action)
+        "#{instance_uri}/#{action.to_s}"
+      end
+
+      def instance_uri
+        "#{self.class.resource_uri}/#{id}"
+      end
+
       module ClassMethods
         def find(token, id)
           from_api(get("#{resource_uri}/#{id}", query: { token: token }))

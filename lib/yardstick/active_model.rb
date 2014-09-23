@@ -11,17 +11,23 @@ module Yardstick
     end
 
     def initialize(params = {})
+       copy_attrs(params) if params
+    end
+
+    def persisted?
+      false
+    end
+
+  private
+
+    def copy_attrs(params)
       params.each do |attr, value|
         if respond_to?("#{attr}=")
           public_send("#{attr}=", value)
         else
           ActiveSupport::Deprecation.warn("Unknown attribute '#{attr}' for '#{self.class.name}'. Your client gem may be out of date compared to the current Yardstick API version.")
         end
-      end if params
-    end
-
-    def persisted?
-      false
+      end
     end
 
     ActiveSupport.on_load(:active_model_serializers) do
