@@ -25,7 +25,10 @@ module Yardstick
       end
 
       def schedule
-        response = put(instance_action_uri(:schedule), body: { token: token, booking_request: { local_start_at: local_start_at.iso8601, local_end_at: local_end_at.iso8601 } })
+        response = put(instance_action_uri(:schedule), body: { token: token, booking_request: {
+          local_start_at: local_start_at.utc.iso8601,
+          local_end_at: local_end_at.utc.iso8601
+        } })
         update_attributes(response)
       end
 
