@@ -32,6 +32,21 @@ module Yardstick
         update_attributes(response)
       end
 
+      def request_alternate_dates
+        response = put(instance_action_uri(:request_alternate_dates), body: {
+          token: token,
+          booking_request: {
+            date1: date1,
+            date1_am: date1_am,
+            date2: date2,
+            date2_am: date2_am,
+            date3: date3,
+            date3_am: date3_am
+          }
+        })
+        update_attributes(response)
+      end
+
       resource_uri '/v2/booking_requests'
     end
   end
