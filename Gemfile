@@ -6,4 +6,4 @@ gemspec
 gem 'lol_concurrency', '~> 0.0.1', git: 'https://github.com/darkhelmet/lol_concurrency'
 gem 'remote_associations', '~> 0.1.0', git: 'https://github.com/yardstick/remote_associations', tag: 'v0.1.0'
 
-gem 'pry-debugger', platforms: :mri
+gem 'pry-debugger', platforms: :mri_19

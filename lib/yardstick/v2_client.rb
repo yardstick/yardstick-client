@@ -15,6 +15,7 @@ module Yardstick
     autoload :Answer
     autoload :Attachment
     autoload :Authentication
+    autoload :BookingRequest
     autoload :Exam
     autoload :ExamDeliveryStatusMessage
     autoload :ExamForm
