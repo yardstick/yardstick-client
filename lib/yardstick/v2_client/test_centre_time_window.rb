@@ -8,6 +8,7 @@ module Yardstick
       resource_uri '/v2/test_centre_time_windows'
 
       attr_accessor :venue, :venue_id, :attachments, :global_start_datetime, :global_end_datetime, :source_id, :source_type, :time_zone
+      attr_accessor :token
 
       def local_start_datetime
         global_start_datetime.in_time_zone(ActiveSupport::TimeZone[time_zone])
@@ -29,6 +30,22 @@ module Yardstick
 
       def self.upcoming_and_recent(token)
         query_collection(token, "#{resource_uri}/upcoming_and_recent")
+      end
+
+      def users
+        User.query_collection(token, typed_resource_uri(:users))
+      end
+
+      def proctors
+        NomadUser.query_collection(token, typed_resource_uri(:proctors))
+      end
+
+    private
+
+      def typed_resource_uri(action = nil)
+        uri = "/v2/#{source_type.underscore.pluralize}/#{source_id}"
+        uri = uri + "/#{action.to_s}" if action.present?
+        uri
       end
     end
   end
