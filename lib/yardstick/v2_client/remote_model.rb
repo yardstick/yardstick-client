@@ -29,16 +29,24 @@ module Yardstick
       end
 
       def instance_action_uri(action)
-        "#{instance_uri}/#{action.to_s}"
+        self.class.instance_action_uri(id, action)
       end
 
       def instance_uri
-        "#{self.class.resource_uri}/#{id}"
+        self.class.instance_uri(id)
       end
 
       module ClassMethods
         def find(token, id)
           from_api(get("#{resource_uri}/#{id}", query: { token: token }))
+        end
+
+        def instance_uri(id)
+          "#{resource_uri}/#{id}"
+        end
+
+        def instance_action_uri(id, action)
+          "#{instance_uri(id)}/#{action.to_s}"
         end
 
         def find_by(token, options = {})
