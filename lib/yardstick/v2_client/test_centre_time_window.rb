@@ -12,6 +12,7 @@ module Yardstick
       resource_uri '/v2/test_centre_time_windows'
 
       attr_accessor :venue, :venue_id, :attachments, :global_start_datetime, :global_end_datetime, :source_id, :source_type, :time_zone
+      attr_accessor :incident_ids, :incidents
       attr_accessor :token
       attr_accessor :paths
 
@@ -43,8 +44,12 @@ module Yardstick
         from_api(get(uri, query: { token: token}), token: token)
       end
 
-      def proctors
-        NomadUser.query_collection(token, typed_resource_uri(:proctors))
+      def create_incident(incident)
+        response = Incident.post(paths.incidents, body: {
+          token: token,
+          incident: incident
+        })
+        Incident.from_api(response)
       end
 
       def users

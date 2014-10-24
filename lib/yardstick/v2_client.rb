@@ -20,6 +20,7 @@ module Yardstick
     autoload :ExamDeliveryStatusMessage
     autoload :ExamForm
     autoload :ExamQuestion
+    autoload :Incident
     autoload :MeasureServiceError
     autoload :NomadUser
     autoload :Passage
