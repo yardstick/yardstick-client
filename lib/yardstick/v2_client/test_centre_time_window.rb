@@ -41,7 +41,7 @@ module Yardstick
 
       def self.find_by_source(token, source)
         uri = instance_action_uri(source[:source_id], source[:source_type].underscore)
-        from_api(get(uri, query: { token: token}), token: token)
+        from_api(get(uri, query: { token: token }), token: token)
       end
 
       def create_incident(incident)
