@@ -41,6 +41,10 @@ module Yardstick
           from_api(get("#{resource_uri}/#{id}", query: { token: token }))
         end
 
+        def action_uri(action)
+          "#{resource_uri}/#{action.to_s}"
+        end
+
         def instance_uri(id)
           "#{resource_uri}/#{id}"
         end

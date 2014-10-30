@@ -52,12 +52,16 @@ module Yardstick
         Incident.from_api(response)
       end
 
+      def incidents
+        @incidents ||= Incident.query_collection(token, paths.incidents)
+      end
+
       def users
-        User.query_collection(token, paths.users)
+        @users ||= User.query_collection(token, paths.users)
       end
 
       def proctors
-        NomadUser.query_collection(token, paths.proctors)
+        @proctors ||= NomadUser.query_collection(token, paths.proctors)
       end
     end
   end
