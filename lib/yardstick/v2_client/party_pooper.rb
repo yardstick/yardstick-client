@@ -19,6 +19,12 @@ module Yardstick
           resp
         end
 
+        def post(*args, &block)
+          resp = super
+          handle_common_codes(resp)
+          resp
+        end
+
         def handle_common_codes(resp)
           case resp.code
           when 401
