@@ -12,8 +12,7 @@ module Yardstick
       resource_uri '/v2/test_centre_time_windows'
 
       attr_accessor :venue, :venue_id, :attachments, :global_start_datetime, :global_end_datetime, :source_id, :source_type, :time_zone, :proctoring_options
-      attr_accessor :incident_ids, :incidents
-      attr_accessor :token
+      attr_accessor :incident_ids, :incidents, :test_centre_seats
       attr_accessor :paths
 
       def local_start_datetime

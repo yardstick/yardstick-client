@@ -17,6 +17,8 @@ module Yardstick
         include RemoteAssociations
 
         base_uri ENV.fetch('MEASURE_BASE_URL', 'http://admin.dev')
+
+        attr_accessor :token
       end
 
       def put(*args)
