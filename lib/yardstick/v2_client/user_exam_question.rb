@@ -10,6 +10,8 @@ module Yardstick
 
       resource_uri '/v2/user_exam_questions'
 
+      belongs_to_remote :user_exam, class: UserExam
+
       def self.process_response(resp, extras = {})
         attrs = super
         attrs.merge!(
