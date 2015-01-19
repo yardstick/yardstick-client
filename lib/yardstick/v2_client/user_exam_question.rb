@@ -18,8 +18,9 @@ module Yardstick
           paths: OpenStruct.new(attrs[:paths]),
           answer: Answer.from_api(attrs[:answer]),
           question: Question.from_api(attrs[:question]),
-          user_exam: UserExam.from_api(attrs[:user_exam])
         )
+        attrs.merge!(user_exam: UserExam.from_api(attrs[:user_exam])) if attrs.has_key?(:user_exam)
+        attrs
       end
 
       def self.for_user_exam(token, url, options = {})
