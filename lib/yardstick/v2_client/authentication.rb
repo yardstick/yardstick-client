@@ -11,6 +11,11 @@ module Yardstick
         response = put('/v2/auth/token', body: options.merge({ email: email, password: password }))
         new(token: response['token'])
       end
+
+      def self.proctoring(email, password, options = {})
+        response = put('/v2/auth/proctoring', body: options.merge(email: email, password: password))
+        new(token: response['token'])
+      end
     end
   end
 end
