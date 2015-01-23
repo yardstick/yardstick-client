@@ -12,7 +12,7 @@ describe Yardstick::V2Client::RemoteModel do
   describe :error_handling do
     it 'should raise a measure service error when reason is not handled' do
       stub_path_response(:get, '/v2/user_exam_questions', 449, { reason: 'an unhandled reason' }, token: 'a token')
-      expect { subject.all('a token') }.to raise_error(Yardstick::V2Client::MeasureServiceError)
+      expect { subject.all('a token').to_a }.to raise_error(Yardstick::V2Client::MeasureServiceError)
     end
   end
 end
