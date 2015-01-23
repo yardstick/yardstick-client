@@ -20,5 +20,12 @@ describe Yardstick::V2Client::Authentication do
         }.to raise_error Yardstick::V2Client::Unauthorized
       end
     end
+
+    it 'should raise password expiry error' do
+      stub_next_response(:put, 449, error: 'blah blah', reason: 'password_expired', url: '/path_to_password_reset')
+      expect {
+        authentication.send(method, 'proctor@getyardstick.com', 'expired password')
+      }.to raise_error Yardstick::V2Client::PasswordExpiredError
+    end
   end
 end

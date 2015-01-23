@@ -29,6 +29,8 @@ module Yardstick
           case resp.code
           when 401
             raise Unauthorized
+          when 449
+            raise RetryWith.from_api(resp)
           when 502
             raise MeasureServiceError, "Bad Gateway"
           when 500..1000
