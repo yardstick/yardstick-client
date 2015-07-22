@@ -21,6 +21,7 @@ module Yardstick
     autoload :ExamDeliveryStatusMessage
     autoload :ExamForm
     autoload :ExamQuestion
+    autoload :Grant
     autoload :Incident
     autoload :NomadUser
     autoload :Passage
