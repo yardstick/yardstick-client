@@ -12,7 +12,7 @@ module Yardstick
       alias_method :writable?, :writable
 
       def update
-        response = put(instance_uri, body: {
+        self.response = put(instance_uri, body: {
           grant_status: {
             status: status
           }
