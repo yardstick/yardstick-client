@@ -40,7 +40,7 @@ module Yardstick
 
       module ClassMethods
         def find(token, id)
-          from_api(get("#{resource_uri}/#{id}", query: { token: token }))
+          from_api(get("#{resource_uri}/#{id}", query: { token: token }), token: token)
         end
 
         def action_uri(action)

@@ -13,11 +13,23 @@ module Yardstick
 
       def update
         self.response = put(instance_uri, body: {
+          token: token,
           grant_status: {
             status: status
           }
         })
         self
+      end
+
+      [:complete, :force_terminate].each do |action|
+        define_method(action) do
+          self.response = put(instance_action_uri(action), body: {
+            token: token,
+            grant_status: {
+              status: status
+            }
+          })
+        end
       end
     end
   end
