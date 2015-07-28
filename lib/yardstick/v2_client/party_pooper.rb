@@ -29,6 +29,8 @@ module Yardstick
           case resp.code
           when 401
             raise Unauthorized
+          when 404
+            raise NotFound, resp.request.last_uri.to_s
           when 449
             raise RetryWith.from_api(resp)
           when 502
