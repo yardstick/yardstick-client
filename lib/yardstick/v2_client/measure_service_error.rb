@@ -24,5 +24,13 @@ module Yardstick
         @password_reset_path = url
       end
     end
+
+    class NotFound < MeasureServiceError
+      attr_reader :path
+
+      def initialize(path)
+        @path = path
+      end
+    end
   end
 end

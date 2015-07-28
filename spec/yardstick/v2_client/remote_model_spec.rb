@@ -14,5 +14,10 @@ describe Yardstick::V2Client::RemoteModel do
       stub_path_response(:get, '/v2/user_exam_questions', 449, { reason: 'an unhandled reason' }, token: 'a token')
       expect { subject.all('a token').to_a }.to raise_error(Yardstick::V2Client::MeasureServiceError)
     end
+
+    it 'should handle 404s' do
+      stub_path_response(:get, '/v2/user_exam_questions/9001', 404, { error: 'UEQ(9001) not found' }, token: 'secret')
+      expect { subject.find('secret', 9001) }.to raise_error(Yardstick::V2Client::NotFound)
+    end
   end
 end
