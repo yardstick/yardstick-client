@@ -25,9 +25,11 @@ module Yardstick
     autoload :Incident
     autoload :NomadUser
     autoload :Passage
+    autoload :Proctor
     autoload :Question
     autoload :RubricCriteria
     autoload :RubricSection
+    autoload :TestCentreManager
     autoload :TestCentreTimeWindow
     autoload :Unauthorized
     autoload :User
