@@ -37,6 +37,10 @@ describe Yardstick::V2Client::TestCentreTimeWindow do
       window = subject.new(source_id: 83, source_type: 'Sitting', token: token, paths: subject::Paths.new(proctors: '/v2/sittings/83/proctors'))
       results = window.proctors
       expect(results.length).to eq(3)
+
+      expect(results[0].class).to eq(Yardstick::V2Client::AdminUser)
+      expect(results[1].class).to eq(Yardstick::V2Client::Proctor)
+      expect(results[2].class).to eq(Yardstick::V2Client::TestCentreManager)
     end
   end
 end
