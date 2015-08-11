@@ -7,7 +7,7 @@ module Yardstick
 
       attr_accessor :token
       attr_accessor :id, :venue_id, :date1_am, :date2_am, :date3_am, :state, :user_id, :grant_id
-      attr_accessor :date1, :date2, :date3, :local_start_at, :local_end_at
+      attr_accessor :date1, :date2, :date3, :local_start_at, :local_end_at, :time_zone
       attr_accessor :user
       attr_accessor :time_required_in_minutes, :session_name
 
