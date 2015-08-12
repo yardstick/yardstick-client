@@ -31,6 +31,12 @@ module Yardstick
             raise Unauthorized
           when 404
             raise NotFound, resp.request.last_uri.to_s
+          when 422
+            warn "422 Unprocessible Entity %s %s: %s" % [
+              resp.request.http_method.name.demodulize.upcase,
+              resp.request.last_uri.to_s,
+              resp['error']
+            ]
           when 449
             raise RetryWith.from_api(resp)
           when 502
