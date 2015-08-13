@@ -24,26 +24,30 @@ module Yardstick
         attrs
       end
 
-      def schedule
-        response = put(instance_action_uri(:schedule), body: { token: token, booking_request: {
-          local_start_at: local_start_at.utc.iso8601,
-          local_end_at: local_end_at.utc.iso8601
-        } })
+      def schedule(start_at)
+        response = put(instance_action_uri(:schedule), body: {
+          token: token,
+          booking_request: {
+            local_start_at: start_at.utc.iso8601
+          }
+        })
+
         update_attributes(response)
       end
 
-      def request_alternate_dates
+      def request_alternate_dates(params)
         response = put(instance_action_uri(:request_alternate_dates), body: {
           token: token,
           booking_request: {
-            date1: date1,
-            date1_am: date1_am,
-            date2: date2,
-            date2_am: date2_am,
-            date3: date3,
-            date3_am: date3_am
+            date1: params[:date1],
+            date1_am: params[:date1_am],
+            date2: params[:date2],
+            date2_am: params[:date2_am],
+            date3: params[:date3],
+            date3_am: params[:date3_am]
           }
         })
+
         update_attributes(response)
       end
 
