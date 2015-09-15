@@ -16,11 +16,13 @@ module Yardstick
     autoload :Answer
     autoload :Attachment
     autoload :Authentication
+    autoload :Booking
     autoload :BookingRequest
     autoload :Exam
     autoload :ExamDeliveryStatusMessage
     autoload :ExamForm
     autoload :ExamQuestion
+    autoload :Grant
     autoload :GrantStatus
     autoload :Incident
     autoload :NomadUser
