@@ -60,7 +60,14 @@ module Yardstick
       end
 
       def proctors
-        @proctors ||= NomadUser.query_collection(token, paths.proctors)
+        @proctors ||= CollectionProxy.new do
+          resp = self.class.get_all(token, paths.proctors)
+          resp.map do |e|
+            e = e.dup
+            type = e.extract!('type')['type']
+            Yardstick::V2Client.const_get(type).from_api(e)
+          end
+        end
       end
     end
   end
