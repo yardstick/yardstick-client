@@ -6,7 +6,22 @@ module Yardstick
     class UserExamQuestion
       include RemoteModel
 
-      attr_accessor :token, :position, :id, :question_id, :question, :user_exam_id, :user_exam, :workflow_state, :correct, :score, :points, :score_tbd, :paths, :answer, :state, :html
+      attr_accessor :token,
+                    :position,
+                    :id,
+                    :question_id,
+                    :question,
+                    :user_exam_id,
+                    :user_exam,
+                    :workflow_state,
+                    :correct,
+                    :score,
+                    :points,
+                    :score_tbd,
+                    :paths,
+                    :answer,
+                    :state,
+                    :html
 
       resource_uri '/v2/user_exam_questions'
 
