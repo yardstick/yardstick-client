@@ -14,4 +14,8 @@ script: time ./script/travis.sh
 branches:
     only: master
 
+sudo: required
+dist: precise
+group: legacy
+
 # activesupport 4.0.0 only supported on ruby >= 1.9.3
