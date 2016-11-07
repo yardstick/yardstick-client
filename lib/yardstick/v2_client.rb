@@ -29,6 +29,7 @@ module Yardstick
     autoload :Question
     autoload :RubricCriteria
     autoload :RubricSection
+    autoload :Site
     autoload :TestCentreManager
     autoload :TestCentreTimeWindow
     autoload :Unauthorized
