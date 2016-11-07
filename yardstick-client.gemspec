@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.required_ruby_version = '>= 1.9.2' # New hashes
+  gem.required_ruby_version = '>= 2.2.2'
 
   gem.add_dependency 'httparty', '~> 0.10.0'
   gem.add_dependency 'activesupport', '>= 3.2.13'
