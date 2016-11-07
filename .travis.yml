@@ -1,21 +1,12 @@
 language: ruby
 rvm:
-    - 1.9.3
     - 2.2.1
     - 2.3.0
-    - jruby-19mode
 
 gemfile:
     - Gemfile
     - gemfiles/activesupport4.2.x.gemfile
     - gemfiles/activesupport3.2.x.gemfile
-
-matrix:
-    exclude:
-        - rvm: 1.9.3
-          gemfile: Gemfile
-        - rvm: jruby-19mode
-          gemfile: Gemfile
 
 script: time ./script/travis.sh
 
