@@ -1,0 +1,9 @@
+source 'https://rubygems.org'
+
+gem 'activesupport', '~> 4.2.0'
+gem 'activemodel', '~> 4.2.0'
+
+gemspec path: '../'
+
+gem 'lol_concurrency', '~> 0.0.1', git: 'https://github.com/darkhelmet/lol_concurrency'
+gem 'remote_associations', '~> 0.1.0', git: 'https://github.com/yardstick/remote_associations', tag: 'v0.1.0'
