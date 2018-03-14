@@ -43,7 +43,7 @@ module Yardstick
     self.default_options = {}
     self.default_cookies = HTTParty::CookieHash.new
 
-    base_uri ENV.fetch('MEASURE_BASE_URL', 'https://admin.localhost')
+    base_uri ENV.fetch('MEASURE_BASE_URL', 'http://admin.localhost')
 
     def self.whoami(token)
       response = get('/v2/whoami', query: { token: token })

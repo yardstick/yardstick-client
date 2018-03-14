@@ -16,7 +16,7 @@ module Yardstick
         extend LolConcurrency::Future
         include RemoteAssociations
 
-        base_uri ENV.fetch('MEASURE_BASE_URL', 'https://admin.localhost')
+        base_uri ENV.fetch('MEASURE_BASE_URL', 'http://admin.localhost')
 
         attr_accessor :token
       end
