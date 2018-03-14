@@ -1,4 +1,4 @@
-ENV['MEASURE_BASE_URL'] = 'https://test.localhost'
+ENV['MEASURE_BASE_URL'] = 'http://test.localhost'
 require 'active_support/all'
 require 'active_model'
 require 'yardstick-client'
