@@ -2,7 +2,7 @@ module Yardstick
   module V2Client
     class ExamForm
       include RemoteModel
-      attr_accessor :id, :name, :exam_id, :exam, :markers
+      attr_accessor :id, :name, :exam_id, :exam, :markers, :locked
 
       resource_uri '/v2/exam_forms'
 
