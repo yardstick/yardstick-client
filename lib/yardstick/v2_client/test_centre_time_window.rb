@@ -38,6 +38,14 @@ module Yardstick
         query_collection(token, "#{resource_uri}/upcoming_and_recent")
       end
 
+      def self.pending_approval(token)
+        query_collection(token, "#{resource_uri}/pending_approval")
+      end
+
+      def self.schedulable(token)
+        query_collection(token, "#{resource_uri}/schedulable")
+      end
+
       def self.find_by_source(token, source)
         uri = instance_action_uri(source[:source_id], source[:source_type].underscore)
         from_api(get(uri, query: { token: token }), token: token)
