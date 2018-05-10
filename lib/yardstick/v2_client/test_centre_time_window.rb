@@ -17,7 +17,7 @@ module Yardstick
       attr_accessor :incident_ids, :incidents, :test_centre_seats
       attr_accessor :paths
 
-      alias_method :source_id, :id
+      alias_method :id, :source_id
 
       def local_start_datetime
         global_start_datetime.in_time_zone(ActiveSupport::TimeZone[time_zone])
