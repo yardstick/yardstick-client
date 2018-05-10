@@ -43,7 +43,7 @@ module Yardstick
       end
 
       def self.apply(token, id, source_type)
-        response = put(instance_action_uri(:apply), body: {
+        response = put(instance_action_uri(id, :apply), body: {
           token: token,
           id: id,
           source_type: source_type
