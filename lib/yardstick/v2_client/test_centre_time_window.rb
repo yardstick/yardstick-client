@@ -40,14 +40,6 @@ module Yardstick
         query_collection(token, "#{resource_uri}/upcoming_and_recent")
       end
 
-      def self.pending_approval(token)
-        query_collection(token, "#{resource_uri}/pending_approval")
-      end
-
-      def self.schedulable(token)
-        query_collection(token, "#{resource_uri}/schedulable")
-      end
-
       def self.find_by_source(token, source)
         uri = instance_action_uri(source[:source_id], source[:source_type].underscore)
         from_api(get(uri, query: { token: token }), token: token)
@@ -78,6 +70,18 @@ module Yardstick
             Yardstick::V2Client.const_get(type).from_api(e)
           end
         end
+      end
+
+      def apply(test_centre_time_window)
+        response = put(instance_action_uri(:apply), body: {
+          token: token,
+          test_centre_time_window: {
+            id: params[:id]
+            source_type: params[:source_type]
+          }
+        })
+
+        update_attributes(response)
       end
     end
   end
