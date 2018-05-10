@@ -75,10 +75,8 @@ module Yardstick
       def apply
         response = put(instance_action_uri(:apply), body: {
           token: token,
-          test_centre_time_window: {
-            id: params[:id],
-            source_type: params[:source_type]
-          }
+          id: params[:id],
+          source_type: params[:source_type]
         })
 
         update_attributes(response)
