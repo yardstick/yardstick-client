@@ -17,7 +17,7 @@ module Yardstick
       attr_accessor :incident_ids, :incidents, :test_centre_seats
       attr_accessor :paths
 
-      alias_method :id, :source_id
+      alias id source_id
 
       def local_start_datetime
         global_start_datetime.in_time_zone(ActiveSupport::TimeZone[time_zone])
@@ -40,6 +40,14 @@ module Yardstick
 
       def self.upcoming_and_recent(token)
         query_collection(token, "#{resource_uri}/upcoming_and_recent")
+      end
+
+      def self.apply(token, id, source_type)
+        response = put(instance_action_uri(:apply), body: {
+          token: token,
+          id: id,
+          source_type: source_type
+        })
       end
 
       def self.find_by_source(token, source)
@@ -72,14 +80,6 @@ module Yardstick
             Yardstick::V2Client.const_get(type).from_api(e)
           end
         end
-      end
-
-      def apply
-        response = put(instance_action_uri(:apply), body: {
-          token: token,
-          source_id: params[:id],
-          source_type: params[:source_type]
-        })
       end
     end
   end
