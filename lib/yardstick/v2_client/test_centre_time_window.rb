@@ -17,6 +17,12 @@ module Yardstick
       attr_accessor :incident_ids, :incidents, :test_centre_seats
       attr_accessor :paths
 
+      alias_method :id
+
+      def id
+        source_id
+      end
+
       def local_start_datetime
         global_start_datetime.in_time_zone(ActiveSupport::TimeZone[time_zone])
       end
@@ -75,7 +81,7 @@ module Yardstick
       def apply
         response = put(instance_action_uri(:apply), body: {
           token: token,
-          id: params[:id],
+          source_id: params[:id],
           source_type: params[:source_type]
         })
       end
