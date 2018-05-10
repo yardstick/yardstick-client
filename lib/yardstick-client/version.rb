@@ -1,5 +1,5 @@
 module Yardstick
   module Client
-    VERSION = '0.2.56'
+    VERSION = '0.2.57'
   end
 end
