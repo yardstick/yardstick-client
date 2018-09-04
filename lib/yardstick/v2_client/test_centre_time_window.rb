@@ -11,9 +11,13 @@ module Yardstick
 
       resource_uri '/v2/test_centre_time_windows'
 
-      attr_accessor :venue, :venue_id, :attachments, :global_start_datetime, :global_end_datetime, :source_id, :source_type, :time_zone, :proctoring_options
+      attr_accessor :venue, :venue_id, :attachments, :global_start_datetime, :global_end_datetime, :source_id,
+                    :source_type, :time_zone, :proctoring_options, :available_to_apply, :pending_proctor_ids,
+                    :confirmed_proctor_ids
       attr_accessor :incident_ids, :incidents, :test_centre_seats
       attr_accessor :paths
+
+      alias id source_id
 
       def local_start_datetime
         global_start_datetime.in_time_zone(ActiveSupport::TimeZone[time_zone])
@@ -36,6 +40,14 @@ module Yardstick
 
       def self.upcoming_and_recent(token)
         query_collection(token, "#{resource_uri}/upcoming_and_recent")
+      end
+
+      def self.apply(token, id, source_type)
+        response = put(instance_action_uri(id, :apply), body: {
+          token: token,
+          id: id,
+          source_type: source_type
+        })
       end
 
       def self.find_by_source(token, source)
