@@ -19,6 +19,16 @@ module Yardstick
                     :deleted_at,
                     :updated_at,
                     :address
+
+      resource_uri '/v2/users'
+
+      def update(params)
+        self.response = put(instance_uri, body: {
+          token: token,
+          user: params
+        })
+        self
+      end
     end
   end
 end

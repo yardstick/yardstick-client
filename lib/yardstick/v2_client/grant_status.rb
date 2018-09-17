@@ -3,8 +3,6 @@ module Yardstick
     class GrantStatus
       include RemoteModel
 
-      attr_accessor :response # TODO: refactor this up so it's available to other models
-
       resource_uri '/v2/grant_status'
 
       attr_accessor :writable, :exam_url, :status, :user_id, :id
