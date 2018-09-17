@@ -26,10 +26,13 @@ module Yardstick
       end
 
       def update(params)
-        self.response = put(instance_uri, body: {
-          token: token,
-          grant: params
-        })
+        self.response = put(
+          instance_uri,
+          body: {
+            token: token,
+            grant: params
+          }
+        )
         self
       end
     end

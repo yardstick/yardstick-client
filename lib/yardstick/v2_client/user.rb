@@ -23,10 +23,13 @@ module Yardstick
       resource_uri '/v2/users'
 
       def update(params)
-        self.response = put(instance_uri, body: {
-          token: token,
-          user: params
-        })
+        self.response = put(
+          instance_uri,
+          body: {
+            token: token,
+            user: params
+          }
+        )
         self
       end
     end
