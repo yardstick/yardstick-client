@@ -20,9 +20,15 @@ module Yardstick
                     :exam_form_group,
                     :num_uses
 
+      resource_uri '/v2/users'
+
       def self.find(token, user_id, id)
-        resource_uri "/v2/users/#{user_id}/grants"
-        super(token, id)
+        from_api(get("#{resource_uri}/#{user_id}/grants/#{id}", query: { token: token }), token: token)
+      end
+
+      def self.all(token, index, options = {})
+        uri = "#{resource_uri}/#{index}"
+        query_collection(token, uri, options)
       end
 
       def update(params)
