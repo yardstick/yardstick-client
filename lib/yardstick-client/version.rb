@@ -1,5 +1,5 @@
 module Yardstick
   module Client
-    VERSION = '0.2.8.6'.freeze
+    VERSION = '0.2.7'.freeze
   end
 end
