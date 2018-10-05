@@ -7,7 +7,7 @@ module Yardstick
       include RemoteModel
       include Cacheable
 
-      cached_accessor :id, :email, :first_name, :last_name, :roles, :token, :nomad_proctor
+      cached_accessor :id, :email, :first_name, :last_name, :roles, :token, :nomad_proctor?
 
       def self.authenticate(username, password)
         response = put('/v2/nomad_users/auth', body: { email: username, password: password })
