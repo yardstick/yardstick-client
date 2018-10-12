@@ -18,7 +18,7 @@ module Yardstick
 
         base_uri ENV.fetch('MEASURE_BASE_URL', 'http://admin.localhost')
 
-        attr_accessor :token
+        attr_accessor :token, :response
       end
 
       def put(*args)

@@ -26,8 +26,13 @@ module Yardstick
         from_api(get("#{resource_uri}/#{user_id}/grants/#{id}", query: { token: token }), token: token)
       end
 
+<<<<<<< HEAD
       def self.all(token, user_id, options = {})
         uri = "#{resource_uri}/#{user_id}/grants"
+=======
+      def self.all(token, index, options = {})
+        uri = "#{resource_uri}/#{index}"
+>>>>>>> ced9f2dec71d5fe6dfc39cdff9d3d5ac63ac2ff1
         query_collection(token, uri, options)
       end
 
