@@ -18,7 +18,7 @@ module Yardstick
                     :exam_form_id,
                     :send_email,
                     :exam_form_group,
-                    :num_uses
+                    :num_uses,
                     :exam
 
       resource_uri '/v2/users'
@@ -41,12 +41,6 @@ module Yardstick
           }
         )
         self
-      end
-
-      def self.process_response(resp, extras = {})
-        attrs = super
-        attrs[:exam] = Exam.from_api(attrs[:exam]) if attrs.has_key?(:exam)
-        attrs
       end
     end
   end
