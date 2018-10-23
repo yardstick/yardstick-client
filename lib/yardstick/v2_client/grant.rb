@@ -19,6 +19,7 @@ module Yardstick
                     :send_email,
                     :exam_form_group,
                     :num_uses
+                    :exam
 
       resource_uri '/v2/users'
 
