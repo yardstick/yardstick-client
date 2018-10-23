@@ -42,6 +42,12 @@ module Yardstick
         )
         self
       end
+
+      def self.process_response(resp, extras = {})
+        attrs = super
+        attrs[:exam] = Exam.from_api(attrs[:exam]) if attrs.has_key?(:exam)
+        attrs
+      end
     end
   end
 end
