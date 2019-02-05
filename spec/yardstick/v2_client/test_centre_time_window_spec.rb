@@ -3,7 +3,9 @@ require 'spec_helper'
 describe Yardstick::V2Client::TestCentreTimeWindow do
   subject { Yardstick::V2Client::TestCentreTimeWindow }
 
-  let(:token) { 'abcdefg' }
+  let(:token)       { 'abcdefg' }
+  let(:id)          { Id.generate.to_s }
+  let(:source_type) { 'Sitting' }
 
   describe :upcoming_and_recent do
     it 'should be a proper get request' do
@@ -41,6 +43,20 @@ describe Yardstick::V2Client::TestCentreTimeWindow do
       expect(results[0].class).to eq(Yardstick::V2Client::AdminUser)
       expect(results[1].class).to eq(Yardstick::V2Client::Proctor)
       expect(results[2].class).to eq(Yardstick::V2Client::TestCentreManager)
+    end
+  end
+
+  describe :apply do
+    it 'should let the proctor apply' do
+      stub_path_response(:put, "/v2/test_centre_time_windows/#{id}/apply", 200, {}, token: token, source_type: source_type)
+      subject.apply(token, id, source_type)
+    end
+  end
+
+  describe :withdraw do
+    it 'should let the proctor withdraw' do
+      stub_path_response(:put, "/v2/test_centre_time_windows/#{id}/withdraw", 200, {}, token: token, source_type: source_type)
+      subject.withdraw(token, id, source_type)
     end
   end
 end
