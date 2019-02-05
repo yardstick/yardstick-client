@@ -45,7 +45,6 @@ module Yardstick
       def self.apply(token, id, source_type)
         response = put(instance_action_uri(id, :apply), body: {
           token: token,
-          id: id,
           source_type: source_type
         })
       end
@@ -53,7 +52,6 @@ module Yardstick
       def self.withdraw(token, id, source_type)
         response = put(instance_action_uri(id, :withdraw), body: {
           token: token,
-          id: id,
           source_type: source_type
         })
       end
