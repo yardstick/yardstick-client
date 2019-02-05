@@ -50,6 +50,14 @@ module Yardstick
         })
       end
 
+      def self.withdraw(token, id, source_type)
+        response = put(instance_action_uri(id, :withdraw), body: {
+          token: token,
+          id: id,
+          source_type: source_type
+        })
+      end
+
       def self.find_by_source(token, source)
         uri = instance_action_uri(source[:source_id], source[:source_type].underscore)
         from_api(get(uri, query: { token: token }), token: token)
