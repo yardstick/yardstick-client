@@ -57,8 +57,8 @@ describe Yardstick::V2Client::UserExam do
 
     it 'should put the scores' do
       ue = ue_client.new(id: 9, token: token)
-      stub_path_response(:put, '/v2/user_exams/9/user_exam_questions/mark', 200, {}, token: token, marks: the_marks)
-      ue.mark_all(the_marks)
+      stub_path_response(:put, '/v2/user_exams/9/user_exam_questions/mark', 200, {}, token: token, marks: the_marks, email_exam_result_after_marking: 'true')
+      ue.mark_all(the_marks, email_exam_result_after_marking: 'true')
     end
   end
 end

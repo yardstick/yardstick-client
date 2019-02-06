@@ -38,7 +38,7 @@ module Yardstick
       def mark_all(marks_as_hash, options = {})
         put("/v2/user_exams/#{id}/user_exam_questions/mark", body: {
           token: token,
-          email_exam_result_after_marking: options.fetch(:email_exam_result_after_marking),
+          email_exam_result_after_marking: options.fetch(:email_exam_result_after_marking, 'false'),
           marks: marks_as_hash # some reason HTTParty will only accept this as hash.. other wise measure throws marks param invalid error
         })
       end
