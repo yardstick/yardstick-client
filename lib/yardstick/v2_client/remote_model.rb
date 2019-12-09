@@ -18,6 +18,8 @@ module Yardstick
 
         base_uri ENV.fetch('MEASURE_BASE_URL', 'http://admin.localhost')
 
+        default_timeout ENV.fetch('MEASURE_DEFAULT_TIMEOUT', 60).to_i
+
         attr_accessor :token, :response
       end
 
