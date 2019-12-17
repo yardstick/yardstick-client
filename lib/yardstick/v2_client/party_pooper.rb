@@ -27,6 +27,8 @@ module Yardstick
 
         def handle_common_codes(resp)
           case resp.code
+          when 400
+            raise BadRequest, resp.body
           when 401
             raise Unauthorized
           when 404

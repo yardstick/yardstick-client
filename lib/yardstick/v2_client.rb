@@ -33,11 +33,14 @@ module Yardstick
     autoload :Site
     autoload :TestCentreManager
     autoload :TestCentreTimeWindow
-    autoload :Unauthorized
     autoload :User
     autoload :UserExam
     autoload :UserExamQuestion
     autoload :Venue
+
+    # errors
+    autoload :BadRequest
+    autoload :Unauthorized
 
     mattr_accessor :default_options, :default_cookies
 

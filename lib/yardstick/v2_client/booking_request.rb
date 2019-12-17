@@ -9,7 +9,7 @@ module Yardstick
       attr_accessor :id, :venue_id, :date1_am, :date2_am, :date3_am, :state, :user_id, :grant_id
       attr_accessor :date1, :date2, :date3, :local_start_at, :local_end_at, :time_zone
       attr_accessor :user
-      attr_accessor :time_required_in_minutes, :session_name, :booked_days_in_advance
+      attr_accessor :time_required_in_minutes, :session_name, :booked_days_in_advance, :earliest_date_available
 
       alias_method :time_required_in, :time_required_in_minutes
 
@@ -20,6 +20,7 @@ module Yardstick
         end
         attrs[:local_start_at] = DateTime.parse(attrs[:local_start_at]) if attrs[:local_start_at].present?
         attrs[:local_end_at] = DateTime.parse(attrs[:local_end_at]) if attrs[:local_end_at].present?
+        attrs[:earliest_date_available] = DateTime.parse(attrs[:earliest_date_available]) if attrs[:earliest_date_available].present?
         attrs[:user] = User.from_api(attrs[:user]) if attrs[:user].present?
         attrs
       end
